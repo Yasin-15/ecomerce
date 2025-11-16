@@ -1,0 +1,86 @@
+### Admin API Testing
+### Use REST Client extension in VS Code
+
+@baseUrl = http://localhost:3000/api
+@token = YOUR_ADMIN_TOKEN_HERE
+
+### 1. Login as Admin (Get Token First)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "admin123"
+}
+
+### 2. Get Dashboard Statistics
+GET {{baseUrl}}/admin/stats
+Authorization: Bearer {{token}}
+
+### 3. Create Product
+POST {{baseUrl}}/admin/products
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "New Product",
+  "description": "Product description",
+  "price": 99.99,
+  "stock": 50,
+  "category": "Electronics",
+  "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"
+}
+
+### 4. Update Product
+PUT {{baseUrl}}/admin/products/PRODUCT_ID_HERE
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Updated Product Name",
+  "price": 89.99,
+  "stock": 45
+}
+
+### 5. Delete Product
+DELETE {{baseUrl}}/admin/products/PRODUCT_ID_HERE
+Authorization: Bearer {{token}}
+
+### 6. Get All Orders (Admin)
+GET {{baseUrl}}/admin/orders
+Authorization: Bearer {{token}}
+
+### 7. Update Order Status
+PUT {{baseUrl}}/admin/orders/ORDER_ID_HERE/status
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "status": "shipped"
+}
+
+### 8. Get All Users
+GET {{baseUrl}}/admin/users
+Authorization: Bearer {{token}}
+
+### 9. Grant Admin Access to User
+PUT {{baseUrl}}/admin/users/USER_ID_HERE/admin
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "isAdmin": true
+}
+
+### 10. Revoke Admin Access
+PUT {{baseUrl}}/admin/users/USER_ID_HERE/admin
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "isAdmin": false
+}
+
+### Test Non-Admin Access (Should Fail)
+GET {{baseUrl}}/admin/stats
+Authorization: Bearer REGULAR_USER_TOKEN_HERE

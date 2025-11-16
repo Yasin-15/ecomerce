@@ -1,0 +1,97 @@
+### Get Payment Methods
+GET http://localhost:3000/api/payments/methods
+Authorization: Bearer YOUR_TOKEN_HERE
+
+###
+
+### Process Stripe Payment
+POST http://localhost:3000/api/payments/process
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+  "orderId": "ORDER_ID_HERE",
+  "paymentMethod": "stripe",
+  "paymentDetails": {
+    "cardNumber": "4242424242424242",
+    "expiry": "12/25",
+    "cvv": "123",
+    "name": "John Doe"
+  }
+}
+
+###
+
+### Process PayPal Payment
+POST http://localhost:3000/api/payments/process
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+  "orderId": "ORDER_ID_HERE",
+  "paymentMethod": "paypal",
+  "paymentDetails": {
+    "email": "user@example.com"
+  }
+}
+
+###
+
+### Process Bank Transfer
+POST http://localhost:3000/api/payments/process
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+  "orderId": "ORDER_ID_HERE",
+  "paymentMethod": "bank_transfer",
+  "paymentDetails": {
+    "accountNumber": "1234567890",
+    "bankName": "Example Bank"
+  }
+}
+
+###
+
+### Process Cash on Delivery
+POST http://localhost:3000/api/payments/process
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+  "orderId": "ORDER_ID_HERE",
+  "paymentMethod": "cash_on_delivery",
+  "paymentDetails": {
+    "confirmed": true
+  }
+}
+
+###
+
+### Process Apple Pay
+POST http://localhost:3000/api/payments/process
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+  "orderId": "ORDER_ID_HERE",
+  "paymentMethod": "apple_pay",
+  "paymentDetails": {
+    "token": "apple_pay_token_here"
+  }
+}
+
+###
+
+### Process Google Pay
+POST http://localhost:3000/api/payments/process
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+  "orderId": "ORDER_ID_HERE",
+  "paymentMethod": "google_pay",
+  "paymentDetails": {
+    "token": "google_pay_token_here"
+  }
+}

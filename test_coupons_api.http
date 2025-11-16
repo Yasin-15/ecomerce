@@ -1,0 +1,57 @@
+### Coupon API Tests
+
+@baseUrl = http://localhost:3000/api
+@token = YOUR_AUTH_TOKEN_HERE
+@adminToken = YOUR_ADMIN_TOKEN_HERE
+
+### Validate Coupon
+POST {{baseUrl}}/coupons/validate
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "code": "WELCOME10",
+  "orderAmount": 100
+}
+
+### Apply Coupon
+POST {{baseUrl}}/coupons/apply
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "code": "WELCOME10"
+}
+
+### Admin - Get All Coupons
+GET {{baseUrl}}/admin/coupons
+Authorization: Bearer {{adminToken}}
+
+### Admin - Create Coupon
+POST {{baseUrl}}/admin/coupons
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "code": "NEWUSER15",
+  "discountType": "percentage",
+  "discountValue": 15,
+  "minOrderAmount": 50,
+  "maxDiscount": 30,
+  "expiryDate": "2025-12-31",
+  "usageLimit": 100,
+  "isActive": true
+}
+
+### Admin - Update Coupon
+PUT {{baseUrl}}/admin/coupons/COUPON_ID_HERE
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "isActive": false
+}
+
+### Admin - Delete Coupon
+DELETE {{baseUrl}}/admin/coupons/COUPON_ID_HERE
+Authorization: Bearer {{adminToken}}

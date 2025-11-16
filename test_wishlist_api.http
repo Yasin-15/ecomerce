@@ -1,0 +1,20 @@
+### Wishlist API Tests
+
+@baseUrl = http://localhost:3000/api
+@token = YOUR_AUTH_TOKEN_HERE
+
+### Get Wishlist
+GET {{baseUrl}}/wishlist
+Authorization: Bearer {{token}}
+
+### Add Product to Wishlist
+POST {{baseUrl}}/wishlist/add/PRODUCT_ID_HERE
+Authorization: Bearer {{token}}
+
+### Remove Product from Wishlist
+DELETE {{baseUrl}}/wishlist/remove/PRODUCT_ID_HERE
+Authorization: Bearer {{token}}
+
+### Check if Product is in Wishlist
+GET {{baseUrl}}/wishlist/check/PRODUCT_ID_HERE
+Authorization: Bearer {{token}}

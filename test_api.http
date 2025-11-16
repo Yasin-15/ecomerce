@@ -1,0 +1,71 @@
+### Test API Endpoints
+### Use REST Client extension in VS Code
+
+@baseUrl = http://localhost:3000/api
+@token = YOUR_TOKEN_HERE
+
+### Seed Products
+POST {{baseUrl}}/products/seed
+
+### Register User
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Get All Products
+GET {{baseUrl}}/products
+
+### Get Products by Category
+GET {{baseUrl}}/products?category=Electronics
+
+### Search Products
+GET {{baseUrl}}/products?search=phone
+
+### Get Product by ID
+GET {{baseUrl}}/products/PRODUCT_ID_HERE
+
+### Get Cart
+GET {{baseUrl}}/cart
+Authorization: Bearer {{token}}
+
+### Add to Cart
+POST {{baseUrl}}/cart/add
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "productId": "PRODUCT_ID_HERE",
+  "quantity": 1
+}
+
+### Get Orders
+GET {{baseUrl}}/orders
+Authorization: Bearer {{token}}
+
+### Create Order
+POST {{baseUrl}}/orders
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "shippingAddress": "123 Main St, City, Country",
+  "paymentMethod": "Credit Card"
+}
+
+### Get Profile
+GET {{baseUrl}}/users/profile
+Authorization: Bearer {{token}}
